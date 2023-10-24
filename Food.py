@@ -20,9 +20,9 @@ class Food:
         self.food_type = None
         self.level_editor = level_editor
         self.randomize_position_and_type()
-        self.apple_image = pygame.image.load('../pythonProject3/images/apple.png')
+        self.apple_image = pygame.image.load('images/apple.png')
         self.apple_image = pygame.transform.scale(self.apple_image, (self.size, self.size))
-        self.pear_image = pygame.image.load('../pythonProject3/images/pear.png')
+        self.pear_image = pygame.image.load('images/pear.png')
         self.pear_image = pygame.transform.scale(self.pear_image, (self.size, self.size))
 
     def randomize_position_and_type(self):

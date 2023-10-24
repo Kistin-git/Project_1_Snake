@@ -24,7 +24,7 @@ class LevelEditor:
         self.blocks = []
         self.levels = ["levels/level1.txt", "levels/level2.txt", "levels/level3.txt", "levels/level4.txt", "levels/level5.txt"]
         self.current_level_index = 0
-        self.obstacle_image = pygame.image.load('../pythonProject3/images/obstacle_tile.png')
+        self.obstacle_image = pygame.image.load('images/obstacle_tile.png')
         self.obstacle_image = pygame.transform.scale(self.obstacle_image, (self.block_size, self.block_size))
 
         if filename or self.current_level_index == 0:

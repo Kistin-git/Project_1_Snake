@@ -7,9 +7,9 @@ class Snake:
         self.direction = [size, 0]
         self.size = size
         self.snake_images = [
-            pygame.transform.scale(pygame.image.load('../pythonProject3/images/snake_green.png'), (size, size)),
-            pygame.transform.scale(pygame.image.load('../pythonProject3/images/snake_red.png'), (size, size)),
-            pygame.transform.scale(pygame.image.load('../pythonProject3/images/snake_blue.png'), (size, size))
+            pygame.transform.scale(pygame.image.load('images/snake_green.png'), (size, size)),
+            pygame.transform.scale(pygame.image.load('images/snake_red.png'), (size, size)),
+            pygame.transform.scale(pygame.image.load('images/snake_blue.png'), (size, size))
         ]
         self.current_image_index = 0
 

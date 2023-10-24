@@ -20,7 +20,7 @@ class GameManager:
         self.menu = Menu(self.screen_width, self.screen_height)
         self.snake_size = snake_size
         self.block_size = block_size
-        self.background_image = pygame.image.load('../pythonProject3/images/background.png')
+        self.background_image = pygame.image.load('images/background.png')
         self.obstacle_image = pygame.transform.scale(self.background_image, (self.block_size, self.block_size))
         self.start_time = pygame.time.get_ticks()
         self.display_info = False
@@ -37,7 +37,7 @@ class GameManager:
         pygame.display.set_caption('Snake Game')
 
         self.snake = Snake(snake_size)
-        self.level_editor = LevelEditor(self.block_size, "../pythonProject3/levels/empty.txt")
+        self.level_editor = LevelEditor(self.block_size, "levels/empty.txt")
         self.food = Food(screen_width, screen_height, snake_size, self.level_editor)
 
         self.input_handler = InputHandler()
