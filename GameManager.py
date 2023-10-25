@@ -138,9 +138,26 @@ class GameManager:
 
     @staticmethod
     def save_score(name, snake_length, time_played):
-        """Сохраняет рекорд игрока в файл."""
-        with open("scores.txt", "a+") as f:
-            f.write(f"{name},{snake_length},{time_played}\n")
+        """Сохраняет или обновляет рекорд игрока в файле."""
+        scores = {}
+
+        # Читаем существующие данные и заполняем словарь
+        try:
+            with open("scores.txt", "r") as file:
+                for line in file:
+                    parts = line.strip().split(',')
+                    if len(parts) == 3:
+                        scores[parts[0]] = (int(parts[1]), float(parts[2]))
+        except FileNotFoundError:
+            pass  # Файл еще не создан, пропускаем чтение
+
+        # Обновляем данные для текущего игрока
+        scores[name] = (snake_length, time_played)
+
+        # Перезаписываем файл с обновленными данными
+        with open("scores.txt", "w") as file:
+            for name, (snake_length, time_played) in scores.items():
+                file.write(f"{name},{snake_length},{time_played}\n")
 
     @staticmethod
     def get_top_scores():
@@ -156,7 +173,7 @@ class GameManager:
 
                 for score in scores:
                     score[1] = int(score[1])
-                    score[2] = int(score[2])
+                    score[2] = float(score[2]) // 1
 
                 sorted_scores = sorted(scores, key=lambda x: (-x[1], x[2]))
 
@@ -355,7 +372,7 @@ class GameManager:
                     self.snake.reset()
                     self.level_editor.current_level_index = 0
                     elapsed_time = (pygame.time.get_ticks() - self.start_time) // 1000
-                    self.save_score(player_name, self.current_level, elapsed_time)
+                    self.save_score(player_name, self.current_level, int(elapsed_time))
 
                 self.snake.move()
                 self.loop_boundary()
